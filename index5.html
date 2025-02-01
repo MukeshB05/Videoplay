@@ -15,6 +15,16 @@
 </head>
 <body>
     <div id="player"></div>
+    <script>
+    jwplayer("player").setup({
+        file: "https://stream.onecloudlive.in/karnan/Nationaltv/index.m3u8",
+        image: "https://your-logo-url.com/logo.png",
+        title: "Channel",
+        autostart: true,
+        width: "100%",
+        aspectratio: "16:9"
+    });
+</script>
     <select id="categoryFilter">
         <option value="All">All</option>
         <option value="News">News</option>
