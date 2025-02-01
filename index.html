@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live TV Streaming</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .channel-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .channel {
+            flex: 1 1 calc(33.333% - 20px);
+            box-sizing: border-box;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        .channel img {
+            max-width: 100%;
+            height: auto;
+        }
+        .video-player {
+            margin-top: 20px;
+            text-align: center;
+        }
+        video {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Live TV Streaming</h1>
+    </header>
+    <div class="container">
+        <div class="video-player">
+            <video id="videoPlayer" controls>
+                <source src="https://sscloud7.com/live/skytv/index.m3u8" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="channel-list" id="channelList">
+            <!-- Channels will be dynamically loaded here -->
+            </div>
+        </div>
+    </div>
+    <script>
+        const channels = [
+            { name: 'Channel1', logo: 'https://i.imgur.com/eO6rnbI.jpeg', streamUrl: 'https://live.sscloud7.in/live/jeyamtv/index.m3u8' },
+            { name: 'Channel2', logo: 'https://i.imgur.com/mVxpX1v.jpeg', streamUrl: 'https://server.sscloud7.in/live/bharathitv/index.m3u8' },
+            { name: 'Channel3', logo: 'https://i.imgur.com/WTWAOut.jpeg', streamUrl: 'https://sscloud7.com/live/malartv/index.m3u8' }
+            { name: 'Channel1', logo: 'https://i.imgur.com/eO6rnbI.jpeg', streamUrl: 'https://live.sscloud7.in/live/jeyamtv/index.m3u8' },
+            { name: 'Channel2', logo: 'https://i.imgur.com/mVxpX1v.jpeg', streamUrl: 'https://server.sscloud7.in/live/bharathitv/index.m3u8' },
+            { name: 'Channel3', logo: 'https://i.imgur.com/WTWAOut.jpeg', streamUrl: 'https://sscloud7.com/live/malartv/index.m3u8' }
+        ];
+
+        const channelList = document.getElementById('channelList');
+        const videoPlayer = document.getElementById('videoPlayer');
+
+        channels.forEach(channel => {
+            const channelDiv = document.createElement('div');
+            channelDiv.className = 'channel';
+            channelDiv.innerHTML = `
+                <img src="${channel.logo}" alt="${channel.name}">
+                <p>${channel.name}</p>
+            `;
+            channelDiv.addEventListener('click', () => {
+                videoPlayer.src = channel.streamUrl;
+                videoPlayer.play();
+            });
+            channelList.appendChild(channelDiv);
+        });
+    </script>
+</body>
+</html>
