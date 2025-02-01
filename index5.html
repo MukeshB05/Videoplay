@@ -54,7 +54,7 @@
                             channel.name.toLowerCase().includes(searchTerm)) {
                             const channelElement = document.createElement('div');
                             channelElement.innerHTML = `
-                                <img src="${channel.logo}" alt="${channel.name}" width="50">
+                                <img src="${channel.logo}" alt="${channel.name}"max-width: 100%;  height: auto">
                                 <span>${channel.name}</span>
                                 <button onclick="playChannel('${channel.stream_url}', '${channel.name}', '${channel.logo}')">Play</button>
                             `;
