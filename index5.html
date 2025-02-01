@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live TV Channels</title>
+    <style>
+        #player {
+            margin-bottom: 20px;
+        }
+        #channels div {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="player"></div>
+    <select id="categoryFilter">
+        <option value="All">All</option>
+        <option value="News">News</option>
+        <option value="Sports">Sports</option>
+    </select>
+    <input type="text" id="searchBar" placeholder="Search channels...">
+    <div id="channels"></div>
+
+    <script src="https://cdn.jwplayer.com/libraries/your_jwplayer_key.js"></script>
+    <script>
+        const categoryFilter = document.getElementById('categoryFilter');
+        const searchBar = document.getElementById('searchBar');
+
+        categoryFilter.addEventListener('change', filterChannels);
+        searchBar.addEventListener('input', searchChannels);
+
+        function filterChannels() {
+            const selectedCategory = categoryFilter.value;
+            const searchTerm = searchBar.value.toLowerCase();
+            fetch('channels.json')
+                .then(response => response.json())
+                .then(data => {
+                    const channelsContainer = document.getElementById('channels');
+                    channelsContainer.innerHTML = '';
+                    data.forEach(channel => {
+                        if ((selectedCategory === 'All' || channel.category === selectedCategory) &&
+                            channel.name.toLowerCase().includes(searchTerm)) {
+                            const channelElement = document.createElement('div');
+                            channelElement.innerHTML = `
+                                <img src="${channel.logo}" alt="${channel.name}" width="50">
+                                <span>${channel.name}</span>
+                                <button onclick="playChannel('${channel.stream_url}', '${channel.name}', '${channel.logo}')">Play</button>
+                            `;
+                            channelsContainer.appendChild(channelElement);
+                        }
+                    });
+                });
+        }
+
+        function playChannel(streamUrl, channelName, logoUrl) {
+            jwplayer("player").setup({
+                file: streamUrl,
+                image: logoUrl,
+                title: channelName,
+                autostart: true,
+                width: "100%",
+                aspectratio: "16:9"
+            });
+        }
+
+        filterChannels(); // Initial load
+    </script>
+</body>
+</html>
