@@ -1,0 +1,51 @@
+[
+    {
+        "id": 1,
+        "name": "Channel1",
+        "stream_url": "https://stream.onecloudlive.in/successtv/successtvhd/index.m3u8",
+        "logo": "https://i.ibb.co/DwzhrBf/Logopit-1686481620846.jpg",
+        "category": "News"
+    },
+    {
+        "id": 2,
+        "name": "Channel2",
+        "stream_url": "https://stream.onecloudlive.in/successtv/successtvhd/index.m3u8",
+        "logo": "https://i.ibb.co/DwzhrBf/Logopit-1686481620846.jpg",
+        "category": "News"
+    },
+    {
+        "id": 3,
+        "name": "Channel3",
+        "stream_url": "https://stream.onecloudlive.in/successtv/successtvhd/index.m3u8",
+        "logo": "https://i.ibb.co/DwzhrBf/Logopit-1686481620846.jpg",
+        "category": "Sports"
+    },
+    {
+        "id": 3,
+        "name": "Channel4",
+        "stream_url": "https://stream.onecloudlive.in/successtv/successtelugu/index.m3u8",
+        "logo": "https://i.ibb.co/DwzhrBf/Logopit-1686481620846.jpg",
+        "category": "News"
+    },
+   {
+        "id": 4,
+        "name": "Channel5",
+        "stream_url": "https://rtmp.bmlive.net/bms/pcn/stream.m3u8",
+        "logo": "https://i.ibb.co/DwzhrBf/Logopit-1686481620846.jpg",
+        "category": "Sports"
+    },
+    {
+        "id": 5,
+        "name": "Channel6",
+        "stream_url": "https://stream.onecloudlive.in/forttv/forttvhd/index.m3u8",
+        "logo": "https://i.ibb.co/DwzhrBf/Logopit-1686481620846.jpg",
+        "category": "News"
+    },
+    {
+        "id": 6,
+        "name": "Channel7",
+        "stream_url": "https://stream.onecloudlive.in/forttv/forttvhd/index.m3u8",
+        "logo": "https://i.imgur.com/PUYUQ5U.jpeg",
+        "category": "Sports"
+    }
+]
