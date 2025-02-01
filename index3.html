@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live TV - Multiple Channels</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        #player {
+            margin: 20px 0;
+        }
+        .channel-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .channel-button {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .channel-button:hover {
+            background-color: #f0f0f0;
+        }
+        .channel-button img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Live TV - Multiple Channels</h1>
+        <div id="player"></div>
+        <div class="channel-list">
+            <div class="channel-button" onclick="changeChannel('https://stream.onecloudlive.in/forttv/forttvhd/index.m3u8', 'Channel1')">
+                <img src="https://i.imgur.com/RQ4EszM.jpeg" alt="Channel 1 Logo">
+                <span>Channel 1</span>
+            </div>
+            <div class="channel-button" onclick="changeChannel('https://stream.onecloudlive.in/successtv/successtelugu/index.m3u8', 'Channel2')">
+                <img src="https://i.imgur.com/eO6rnbI.jpeg" alt="Channel 2 Logo">
+                <span>Channel 2</span>
+            </div>
+            <div class="channel-button" onclick="changeChannel('https://rtmp.bmlive.net/bms/pcn/stream.m3u8', 'Channel3')">
+                <img src="https://i.ibb.co/DwzhrBf/Logopit-1686481620846.jpg" alt="Channel 3 Logo">
+                <span>Channel 3</span>
+            </div>
+            <div class="channel-button" onclick="changeChannel('https://rtmp.bmlive.net/bms/pcn/stream.m3u8', 'Channel4')">
+                <img src="https://i.imgur.com/PUYUQ5U.jpeg" alt="Channel 4 Logo">
+                <span>Channel 4</span>
+            </div>
+            <div class="channel-button" onclick="changeChannel('https://rtmp.bmlive.net/bms/pcn/stream.m3u8', 'Channel5')">
+                <img src="https://i.imgur.com/IxnrMrd.jpeg" alt="Channel 5 Logo">
+                <span>Channel 5</span>
+            </div>
+            <!-- Add more channels as needed -->
+        </div>
+    </div>
+
+    <!-- JW Player Library -->
+    <script src="https://content.jwplatform.com/libraries/SAHhwvZq.js"></script>
+    <script>
+        // Initialize JW Player
+        const player = jwplayer('player').setup({
+            file: 'https://stream.onecloudlive.in/successtv/successtvhd/index.m3u8', // Default channel
+            width: '100%',
+            aspectratio: '16:9',
+            autostart: true,
+            mute: false,
+            primary: 'html5',
+            controls: true,
+            repeat: false,
+            displaytitle: false,
+            stretching: 'uniform',
+            skin: {
+                name: 'seven'
+            }
+        });
+
+        // Function to change the channel
+        function changeChannel(streamUrl, channelName) {
+            player.load([{ file: streamUrl }]);
+            player.play();
+            player.setTitle(channelName); // Optional: Set the channel name as the player title
+        }
+
+        // Optional: Add event listeners
+        player.on('ready', function() {
+            console.log('Player is ready');
+        });
+
+        player.on('play', function() {
+            console.log('Player is playing');
+        });
+
+        player.on('pause', function() {
+            console.log('Player is paused');
+        });
+
+        player.on('error', function(error) {
+            console.error('Player error:', error);
+        });
+    </script>
+</body>
+</html>
